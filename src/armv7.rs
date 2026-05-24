@@ -3117,9 +3117,7 @@ impl Decoder<ARMv7> for InstDecoder {
                                 }
                                 Opcode::LDRB
                             }
-                            _ => {
-                                unreachable!();
-                            }
+                            _ => return Err(DecodeError::InvalidOpcode),
                         }
                     };
                     inst.operands = [
@@ -3312,7 +3310,7 @@ impl Decoder<ARMv7> for InstDecoder {
                                         Operand::Nothing,
                                     ]
                                 }
-                                _ => unreachable!(),
+                                _ => return Err(DecodeError::InvalidOpcode),
                             };
                         }
                         0b0101 if (word >> 4) & 0x11 == 0b01 => {
@@ -3371,7 +3369,7 @@ impl Decoder<ARMv7> for InstDecoder {
                                         Operand::Nothing,
                                     ]
                                 }
-                                _ => unreachable!(),
+                                _ => return Err(DecodeError::InvalidOpcode),
                             };
                         }
                         0b0101 if (word >> 20) & 1 == 1 => {
@@ -3416,7 +3414,7 @@ impl Decoder<ARMv7> for InstDecoder {
                                         Operand::Nothing,
                                     ]
                                 }
-                                _ => unreachable!(),
+                                _ => return Err(DecodeError::InvalidOpcode),
                             };
                         }
                         0b0110 => {
@@ -3451,7 +3449,7 @@ impl Decoder<ARMv7> for InstDecoder {
                                         Operand::Imm32(rotate),
                                     ]
                                 }
-                                _ => unreachable!(),
+                                _ => return Err(DecodeError::InvalidOpcode),
                             };
                         }
                         0b0111 if (word >> 4) & 0x11 == 0b01 => {
@@ -3510,7 +3508,7 @@ impl Decoder<ARMv7> for InstDecoder {
                                         Operand::Nothing,
                                     ]
                                 }
-                                _ => unreachable!(),
+                                _ => return Err(DecodeError::InvalidOpcode),
                             };
                         }
                         0b0111 if (word >> 20) & 1 == 1 => {
@@ -3555,7 +3553,7 @@ impl Decoder<ARMv7> for InstDecoder {
                                         Operand::Nothing,
                                     ]
                                 }
-                                _ => unreachable!(),
+                                _ => return Err(DecodeError::InvalidOpcode),
                             };
                         }
                         0b1000 if (word >> 20) & 1 == 0 => {
@@ -3704,9 +3702,9 @@ impl Decoder<ARMv7> for InstDecoder {
                                     Operand::Nothing,
                                 ];
                             }
-                            _ => unreachable!(),
+                            _ => return Err(DecodeError::InvalidOpcode),
                         },
-                        _ => unreachable!(),
+                        _ => return Err(DecodeError::InvalidOpcode),
                     }
                 } else {
                     // |c o n d|0 1 1|x x x x|x|x x x x|x x x x|x x x x x|x x|0|x x x x|
