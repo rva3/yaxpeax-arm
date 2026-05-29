@@ -19,6 +19,7 @@ yaxpeax-arch = { version = "0.3.1", default-features = false, features = [] }
 bitvec = { version = "1.0.1", default-features = false, features = [] }
 "serde" = { version = "1.0", optional = true }
 "serde_derive" = { version = "1.0", optional = true }
+derive_more = { version = "2.1.1", features = ["is_variant"] }
 
 [features]
 default = ["std", "alloc", "fmt", "use-serde", "non-exhaustive-enums"]

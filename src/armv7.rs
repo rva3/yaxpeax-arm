@@ -5,6 +5,7 @@
 //use serde::{Serialize, Deserialize};
 use core::fmt::{self, Display, Formatter};
 
+use derive_more::IsVariant;
 use yaxpeax_arch::{AddressDiff, Arch, Decoder, LengthedInstruction, ReadError, Reader};
 #[allow(deprecated)]
 use yaxpeax_arch::{NoColors, ShowContextual};
@@ -43,7 +44,7 @@ impl Display for ConditionedOpcode {
 /// displaying an instruction the same way its `Display` impl would.
 pub struct NoContext;
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, IsVariant)]
 #[allow(non_camel_case_types)]
 #[allow(missing_docs)]
 #[cfg_attr(feature = "non-exhaustive-enums", non_exhaustive)]
