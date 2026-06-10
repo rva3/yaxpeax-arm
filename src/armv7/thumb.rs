@@ -364,7 +364,7 @@ pub fn decode_into<T: Reader<<ARMv7 as Arch>::Address, <ARMv7 as Arch>::Word>>(d
                                                 // want `<Rm>, LSL #1`, construct a raw shift
                                                 // ourselves
                                                 RegShift::from_raw(
-                                                    0b10000 |        // `RegImm`
+                                                    0b00000 |        // `RegImm`
                                                     rd as u16 |            // reg == rd
                                                     (0b00 << 5) |   // LSL
                                                     (1 << 7)        // shift == #1
