@@ -357,7 +357,7 @@ pub fn decode_into<T: Reader<<ARMv7 as Arch>::Address, <ARMv7 as Arch>::Word>>(d
                                         // TODO: should_is_must()
                                         // rt == 0b1111
                                         // rd == 0b0000
-                                        inst.opcode = Opcode::TBB;
+                                        inst.opcode = Opcode::TBH;
                                         inst.operands = [
                                             Operand::RegDerefPreindexRegShift(
                                                 Reg::from_u8(rn),
